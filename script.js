@@ -64,42 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(element);
     });
 
-    // ----------------------------------------------------
-    // 4. Project Filters with Smooth Transition
-    // ----------------------------------------------------
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // Remove active class from other buttons
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                
-                // First fade out and shrink
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.92) translateY(10px)';
-                card.style.transition = 'opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo)';
-
-                setTimeout(() => {
-                    if (filterValue === 'all' || cardCategory === filterValue) {
-                        card.style.display = 'flex';
-                        // Trigger reflow to ensure the transition runs
-                        card.offsetHeight;
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1) translateY(0)';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }, 400);
-            });
-        });
-    });
 
     // ----------------------------------------------------
     // 5. Parallax Background Blobs
