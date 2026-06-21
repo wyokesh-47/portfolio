@@ -1156,9 +1156,11 @@ button, input, textarea {
    Contact Section
    ========================================================================== */
 .contact-wrapper {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: 24px;
@@ -1168,51 +1170,117 @@ button, input, textarea {
     -webkit-backdrop-filter: blur(20px);
 }
 
-.contact-heading {
-    margin-bottom: 1.5rem;
-}
-
-.contact-sub {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-}
-
-.contact-info-list {
+.contact-details-full {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.contact-info-link {
-    display: flex;
     align-items: center;
-    gap: 1rem;
-    font-weight: 500;
+    text-align: center;
+}
+
+.contact-heading-centered {
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.contact-sub-centered {
+    font-size: 1.1rem;
     color: var(--text-secondary);
-    transition: var(--transition-fast);
+    margin-bottom: 3.5rem;
+    max-width: 600px;
 }
 
-.contact-info-link:hover {
-    color: var(--text-primary);
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 3.5rem;
 }
 
-.contact-icon-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: rgba(15, 23, 42, 0.03);
+.contact-info-card {
+    background: var(--bg-surface-solid);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
     color: var(--text-primary);
+    text-decoration: none;
+}
+
+a.contact-info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-indigo);
+    background-color: var(--bg-surface);
+}
+
+.contact-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background-color: rgba(99, 102, 241, 0.05);
+    color: var(--accent-indigo);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    transition: var(--transition-smooth);
+}
+
+a.contact-info-card:hover .contact-card-icon {
+    background-color: var(--accent-indigo);
+    color: #FFFFFF;
+    transform: scale(1.1);
+}
+
+.contact-card-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card-value {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    word-break: break-all;
+    line-height: 1.5;
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.contact-card-action {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-indigo);
+    transition: var(--transition-fast);
+}
+
+a.contact-info-card:hover .contact-card-action {
+    color: var(--text-primary);
+}
+
+.social-links-centered {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .social-links-container {
     display: flex;
     gap: 1rem;
+    justify-content: center;
 }
 
 .social-icon {
@@ -1323,16 +1391,129 @@ button, input, textarea {
 }
 
 @media (max-width: 991px) {
-    .contact-wrapper {
+    .contact-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-cards-grid {
         grid-template-columns: 1fr;
-        gap: 4rem;
-        padding: 3rem;
+    }
+    .contact-wrapper {
+        padding: 3rem 2rem;
     }
 }
 
 @media (max-width: 576px) {
     .contact-wrapper {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.25rem;
+    }
+}
+
+/* ==========================================================================
+   Certifications Section
+   ========================================================================== */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.cert-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: flex;
+    gap: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-color-hover);
+}
+
+.cert-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background-color: rgba(99, 102, 241, 0.05);
+    color: var(--accent-indigo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    flex-shrink: 0;
+}
+
+.cert-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cert-issuer {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+}
+
+.cert-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.cert-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.cert-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-indigo);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.cert-link:hover {
+    color: var(--text-primary);
+}
+
+.cert-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    background-color: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .cert-card {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
     }
 }
 
